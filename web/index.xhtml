@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+  <h:head>
+      <script type="text/javascript" src="recources/js/pr.js"></script>
+      <link rel="stylesheet" href="recources/js/jalaliCalendar/skins/aqua/theme.css"/>
+      <script type="text/javascript" src="recources/js/jalaliCalendar/jalali.js"></script>
+      <script type="text/javascript"  src="recources/js/jalaliCalendar/calendar.js"></script>
+      <script type="text/javascript" src="recources/js/jalaliCalendar/calendar-setup.js"></script>
+      <script type="text/javascript" src="recources/js/jalaliCalendar/lang/calendar-fa.js"></script>
+      <script type="text/javascript">
+          function disableFileUpload(){
+                  PF('uploader').disableButton(PF('uploader').chooseButton);
+              //PF('uploader').chooseButton.find('input[type="file"]').attr('disabled', 'disabled');
+          }
+          function enableFileUpload(){
+              PF('uploader').enableButton(PF('uploader').chooseButton);
+          }
+      </script>
+  </h:head>
+<h:body dir="rtl">
+    <p:graphicImage url="recources/images/book.jpg" width="1200" height="100px"></p:graphicImage>
+
+
+        <p:tabView onTabChange="">
+
+            <p:tab title="ثبت نام">
+                <h:form id="memberRegisterForm">
+                <h:panelGrid columns="3" id="grid">
+                    <h:outputLabel>نام: </h:outputLabel>
+
+                    <p:inputText id="memberRegisterFormnameTextbox" required="true" value="#{memberManagedBean.name}" requiredMessage="نه نه">
+
+                    </p:inputText>
+                    <p:message for="memberRegisterFormnameTextbox"></p:message>
+
+                    <p:outputLabel>نام خانوادگی:</p:outputLabel>
+
+                    <p:inputText id="memberRegisterFormfamilyTextbox" required="true" value="#{memberManagedBean.family}"></p:inputText>
+                    <p:message for="memberRegisterFormfamilyTextbox"></p:message>
+
+                    <p:outputLabel>کد ملی:</p:outputLabel>
+
+                    <p:inputText id="memberRegisterFormcodemelliTextbox" required="true" value="#{memberManagedBean.code_melli}">
+                        <f:validator validatorId="com.library.validators.CodeMelliValidator"></f:validator>
+                    </p:inputText>
+                    <p:message for="memberRegisterFormcodemelliTextbox"></p:message>
+
+                    <p:outputLabel>آدرس:</p:outputLabel>
+                    <p:inputText id="memberRegisterFormaddressTextbox" lang="fa" value="#{memberManagedBean.address}"></p:inputText>
+                    <p:message for="memberRegisterFormaddressTextbox"></p:message>
+                    <f:facet name="footer">
+                        <h:panelGroup style="display:block; text-align:center">
+                        <h:commandButton id="memberregistrationButton" process="@form" update="@form memberRegisterForm"
+                                         actionListener="#{memberManagedBean.memberRegister}" binding="#{memberManagedBean.memberRegisterButton}"
+                                       value="ثبت نام"></h:commandButton>
+                            <br/>
+                            <p:messages id="memberRegisterFormMessage" for="memberregistrationButton" closable="true" escape="false"></p:messages>
+                        </h:panelGroup>
+                    </f:facet>
+
+                </h:panelGrid>
+
+
+               </h:form>
+            </p:tab>
+            <p:tab title="ثبت کتاب">
+                    <h:form id="bookRegisterForm" enctype="multipart/form-data" acceptcharset="utf-8">
+
+                <h:panelGrid columns="3">
+                    <h:outputLabel>نام کتاب</h:outputLabel>
+                    <p:inputText id="bookRegisterFormnameTextbox" value="#{bookManagedBean.name}" required="true"></p:inputText>
+                    <p:message for="bookRegisterFormnameTextbox"></p:message>
+
+                    <h:outputLabel>نویسنده</h:outputLabel>
+                    <p:inputText title="gfgfgfgf" id="bookRegisterFormAuthorTextbox" value="#{bookManagedBean.author}" required="true"></p:inputText>
+                    <p:message for="bookRegisterFormAuthorTextbox"></p:message>
+
+                    <p:outputLabel> آپلود تصویر کتاب:</p:outputLabel>
+                    <p:fileUpload  widgetVar="uploader" id="fileUploadComponent" fileUploadListener="#{bookManagedBean.fileUploadManager}" dragDropSupport="false" value="#{bookManagedBean.uploadedFile}"
+                               oncomplete="disableFileUpload()" required="true"    allowTypes="/(\.|\/)(gif|jpe?g|png)$/" sizeLimit="500000"
+                          update="bookRegisterFormMessage"   fileLimit="1" fileLimitMessage="تنها یک فایل می توانید آپلود کنید" cancelLabel="للغو" label="فایل عکس را انتخاب کنید"  uploadLabel="آپلود"
+                          invalidFileMessage="پسوند فایل باید png، jpg یا gif باشد"  invalidSizeMessage="حجم فایل باید کمتر از 500kb باشد"></p:fileUpload>
+                    <p:tooltip for="fileUploadComponent" value="ارتفاع تصویر باید بین 100 تا 450 و عرض آن بین 150 تا 500 باشد"></p:tooltip>
+                    <f:facet name="footer">
+                        <h:panelGroup style="text-align: center">
+                            <p:commandButton id="bookRegisterButton" process="@form" update="@form bookRegisterFormMessage" action="#{bookManagedBean.bookRegister}" onsuccess="enableFileUpload"  value="ثبت"
+                                    binding="#{bookManagedBean.bookRegisterButton}" widgetVar="bookRegisterButton" ></p:commandButton>
+                            <br/>
+                            <p:messages id="bookRegisterFormMessage" for="bookRegisterButton" closable="true" escape="false"></p:messages>
+
+                        </h:panelGroup>
+                    </f:facet>
+                </h:panelGrid>
+               </h:form>
+            </p:tab>
+            <p:tab title="امانت کتاب">
+                <h:form id="borrowForm">
+
+                   <h:panelGrid columns="3">
+                       <p:outputLabel>شماره عضویت:</p:outputLabel>
+                       <p:inputText id="borrowFormMembershipNumberTextbox" required="true" value="#{memberManagedBean.memberShipNumber}">
+                           <f:validator validatorId="com.library.validators.MembershipNumberValidator"></f:validator>
+                       </p:inputText>
+                       <p:message for="borrowFormMembershipNumberTextbox"></p:message>
+                       <p:commandButton id="memberViewButton" binding="#{memberManagedBean.memberViewButton}"  actionListener="#{memberManagedBean.show}" update="@form borrowFormMessage" value="مشاهده اطلاعات عضو"></p:commandButton>
+                   </h:panelGrid>
+                    <p:messages id="borrowFormMessage" for="memberViewButton" closable="true"></p:messages>
+                </h:form>
+            </p:tab>
+            <p:tab title="لیست کتاب ها">
+                <h:form>
+
+                </h:form>
+            </p:tab>
+
+        </p:tabView>
+
+    <!--<p:outputLabel>تاریخ عضویت:</p:outputLabel>
+                    <input type="text" id="date_input"/>
+                    <input type="button" id="date_btn" style="background-image:url('recources/js/jalaliCalendar/cal.png');"  ></input>
+                    <script type="text/javascript">
+                        Calendar.setup({
+                            inputField: 'date_input',
+                            button: 'date_btn',
+                            ifFormat: '%Y/%m/%d',
+                            dateType: 'jalali',
+                            singleClick:false
+
+                        });
+                    </script>
+-->
+</h:body>
+</html>

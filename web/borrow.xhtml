@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>امانت کتاب</title>
+
+</h:head>
+<h:body dir="rtl">
+    <h:form>
+        <p:accordionPanel >
+            <p:tab title="اطلاعات عضو">
+                    <h:panelGrid columns="2" style="width: 800px">
+                        <p:outputLabel>شماره عضویت: </p:outputLabel>
+                        <h:outputText value="#{bookBorrowManagedBean.member.membership_number}"></h:outputText>
+
+                        <p:outputLabel>نام و نام خانوادگی: </p:outputLabel>
+                        <h:outputText value="#{bookBorrowManagedBean.member.name} #{bookBorrowManagedBean.member.family}"></h:outputText>
+
+                        <p:outputLabel >تاریخ عضویت: </p:outputLabel>
+                        <h:outputText value="#{bookBorrowManagedBean.member.membershipdate.date}"></h:outputText>
+
+                        <p:outputLabel>کد ملی : </p:outputLabel>
+                        <h:outputText value="#{bookBorrowManagedBean.member.code_melli}"></h:outputText>
+
+                        <p:outputLabel> آدرس: </p:outputLabel>
+                        <h:outputText value="#{bookBorrowManagedBean.member.address}"></h:outputText>
+
+                    </h:panelGrid>
+                    <!--<h:outputText value="#{bookBorrowManagedBean.member.membership_number}"></h:outputText>-->
+
+            </p:tab>
+
+            <p:tab title="کتاب ها">
+                <p:dataTable value="#{bookBorrowManagedBean.books}" var="book">
+                    <p:column headerText="نام کتاب">
+                        <p:outputLabel value="#{book.name}"></p:outputLabel>
+                    </p:column>
+
+                    <p:column headerText="شماره ثبت">
+                        <p:outputLabel value="#{book.id}"></p:outputLabel>
+                    </p:column>
+
+                    <p:column headerText="تاریخ امانت">
+                        <p:outputLabel value=""></p:outputLabel>
+                    </p:column>
+                </p:dataTable>
+            </p:tab>
+
+            <p:tab title="امانت کتاب">
+                <h:form id="bookBorrowForm">
+                    <p:outputLabel>شماره ثبت کتاب: </p:outputLabel>
+                    <p:autoComplete value="#{bookBorrowManagedBean.selectedBook}" required="true" id="bookRecordTextbox" queryDelay="1000" forceSelection="trueo"
+                            completeMethod="#{bookBorrowManagedBean.showBooks}" var="book1" itemLabel="#{book1.name}" itemValue="#{book1}" converter="com.library.converters.BookConverter">
+                        <p:column>
+                            <p:outputLabel value="#{book1.name}"></p:outputLabel>
+                        </p:column>
+                        <p:column>
+                            <p:outputLabel value="#{book1.author}"></p:outputLabel>
+                        </p:column>
+                            </p:autoComplete>
+                    <p:message for="bookRecordTextbox"></p:message>
+                    <p:commandButton id="bookRecordButton" value="ثبت کتاب" update="@form bookBorrowFormMessage"
+                                     binding="#{bookBorrowManagedBean.bookRecordButton}" action="#{bookBorrowManagedBean.borrow}"
+                           ></p:commandButton>
+                    <p:messages id="bookBorrowFormMessage" for="bookRecordButton" closable="true"></p:messages>
+                </h:form>
+            </p:tab>
+        </p:accordionPanel>
+    </h:form>
+</h:body>
+</html>

@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Class-Path: postgresql-9.4-1201.jdbc4.jar jsf-impl-2.2.11.jar servlet-
+ api-2.5.jar primefaces-5.1.jar jsf-api-2.2.11.jar commons-io-2.4.jar 
+ antlr-2.7.7.jar dom4j-1.6.1.jar hibernate-commons-annotations-4.0.5.F
+ inal.jar hibernate-core-4.3.6.Final.jar hibernate-jpa-2.1-api-1.0.0.F
+ inal.jar jandex-1.1.0.Final.jar javassist-3.18.1-GA.jar jboss-logging
+ -3.1.3.GA.jar jboss-logging-annotations-1.2.0.Beta1.jar jboss-transac
+ tion-api_1.2_spec-1.0.0.Final.jar
+

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="327921382">
+    <data-source source="LOCAL" name="PostgreSQL - library@localhost" uuid="eca76cd0-a888-441c-b1a1-262bacb245ce">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/library</jdbc-url>
+      <user-name>postgres</user-name>
+      <user-password>dfc9dfdedfd8df9bdf93df93df9cdfcbdfd9dfc4</user-password>
+      <schema-pattern>library.pg_catalog library.public</schema-pattern>
+      <default-schemas>library.pg_catalog library.public</default-schemas>
+      <libraries>
+        <library>
+          <url>file://F:/jars/postgresql-9.4-1201.jdbc41.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+    <data-source source="LOCAL" name="hibernate.cfg.xml" uuid="ee7afa24-8792-407a-b3dd-dbcfcb5dbd00">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/library</jdbc-url>
+      <user-name>postgres</user-name>
+      <user-password>dfc9dfdedfd8df9bdf93df93df9cdfcbdfd9dfc4</user-password>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="web:WEB-INF:hibernate.cfg.xml" uuid="c8f562e3-59a9-4208-b711-bacd772e1f48">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/library</jdbc-url>
+      <user-name>postgres</user-name>
+      <user-password>dfc9dfdedfd8df9bdf93df93df9cdfcbdfd9dfc4</user-password>
+      <libraries>
+        <library>
+          <url>file://F:\jars\postgresql-9.4-1201.jdbc4.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+    <data-source source="LOCAL" name="src:hibernate.cfg.xml" uuid="961675fe-e35d-4480-b83a-15ba9e7dd702">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/library</jdbc-url>
+      <user-name>postgres</user-name>
+      <user-password>dfc9dfdedfd8df9bdf93df93df9cdfcbdfd9dfc4</user-password>
+      <libraries>
+        <library>
+          <url>file://F:\jars\postgresql-9.4-1201.jdbc4.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+    <data-source source="LOCAL" name="src:hiber:hibernate.cfg.xml" uuid="908fd76d-3365-42b0-935f-860a29d47e8d">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/library</jdbc-url>
+      <user-name>postgres</user-name>
+      <user-password>dfc9dfdedfd8df9bdf93df93df9cdfcbdfd9dfc4</user-password>
+      <libraries>
+        <library>
+          <url>file://F:\jars\postgresql-9.4-1201.jdbc4.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+  </component>
+</project>
+
